@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body class="text-center">
+  <h1>New game</h1>
+  <hr>
+  <br>
+  <div>
+    <% @letters.each do |letter| %>
+    <span class="letter">
+      <%= letter %>
+    </span>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <p>What is the longest word you can find?</p>
+    <form method="POST" class="text-center" action="/score"> <!-- chemin -->
+    <input type="text" name="question"> <!-- nom de champ  -->
+    <input class="btn btn-primary" type="submit" value="Send">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    </form>
+  </div>
+</body>
+</html>
